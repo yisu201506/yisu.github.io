@@ -1,7 +1,7 @@
 title: Yi Su's Running Thoughts
 author:
-  name: GitHub User
-  email: your-email@domain.com
+  name: Yi Su
+  email: yisu201506@gmail.com
 description: >
   This site is for documenting my learnings and thoughts  
 show_downloads: false
@@ -11,8 +11,4 @@ plugins:
   - jekyll-seo-tag
 
 minima:
-  skin: classic
-  # Minima date format.
-  # The default value is "%b %d, %Y" (e.g. Nov 14, 2023) 
-  # Refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this.
-  #date_format: "%b-%d-%Y"    
+  skin: classic  
