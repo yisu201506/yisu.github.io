@@ -2,7 +2,7 @@
 layout: post
 title:  "Recent Read Papers and Summaries"
 ---
-This blog records the paper I recently read, I will try to partition them by topics.
+This blog records the paper I recently read, I will try to partition them by topics. I use the number of 👍 to represent how much I enjoy the paper, and it **DOES NOT** reflect the actual theoretical and practical contribution of the paper.
 
 # LLM Papers 
 ## [InstructGPT](https://arxiv.org/abs/2203.02155) 👍👍
