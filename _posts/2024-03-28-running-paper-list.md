@@ -4,6 +4,17 @@ title:  "Recent Read Papers and Summaries"
 ---
 This blog records the paper I recently read, I will try to partition them by topics.
 
+## [InstructGPT](https://arxiv.org/abs/2203.02155)
+**Summary**: Historically, the language model trained on large corpses of texts using next word prediction is not so good at following instructions, answering questions or other preferred way that humans want it to perform. This paper provides a method or rather a sequence of steps to align the language model to the human preference in texts and values in it.
+
+Specifically, there are three steps:
+1. First finetune a previously pretrained model on a manually collected prompt-response data set. These prompts are initially collected through researcher’s instruction, and once the initial model is in beta API, it is then partially collected through the API distribution.
+2. Once we have a supervised fine-tuning model, use it to sample K completions of the same prompt (the prompt are either from beta API or labeler), and ask labelers to rank these K prompts. These preferences form K choose 2 pairwise data points. Then pass these data points to SFT model with last layer removed to form a set of embeddings. Use this embeddings to train a reward model by the loss function $-\dfrac{2}{K(K-1)}E_{(x, y_w, y_l)\in D}[\log(\sigma(r_{\theta}(x, y_w) - r_{\theta}(x,y_l)))]$, this is the binary cross entropy on the difference of two completions.
+3. Finally, fix this trained reward model, and make the language model trainable. Sample the prompts from the API, pass through the language model, and use the RM to give a score/reward to each response. We use PPO to train this human RL feedback. And the final result will be the Instruct GPT model. Note that, we throw in a negative KL divergence term between the SFT language policy and the learned language policy, so that the learned policy won’t be too far away from original policy due to reward hacking
+
+The test shows that this model is preferred compared with GPT3, and generalizes well to the unseen dataset, such as new language, in the RLHF process, and also generalizes well to the labelers who did not participate in the training data labeling process. With proper preference definition, this can train an LLM which caters towards one specific set of preferences.
+
+
 ## [Direct Preference Optimization (DPO)](https://arxiv.org/abs/2305.18290)
 **Summary**: This paper is very interesting! It has the following contribution:
 It offers a framework where people can directly align the model according to the human preference data instead of the approach in RLHF, which requires training a reward preference function, and using this function to align to the preference data.
