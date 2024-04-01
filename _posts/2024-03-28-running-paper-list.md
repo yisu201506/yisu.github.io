@@ -14,6 +14,8 @@ Specifically, there are three steps:
 
 The test shows that this model is preferred compared with GPT3, and generalizes well to the unseen dataset, such as new language, in the RLHF process, and also generalizes well to the labelers who did not participate in the training data labeling process. With proper preference definition, this can train an LLM which caters towards one specific set of preferences.
 
+## [Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback](https://arxiv.org/abs/2204.05862)
+**Summary**: This paper followed the approach from [OpenAI’s RLHF](https://arxiv.org/abs/2009.01325), and used data that are created towards being helpful and harmless, which are interpreted by the human reviewers themselves. Then it finds that the performance has trade off between helpfulness and harmlessness, but does not have trade off on other capabilities. Majority of the paper talks about how to collect the data and the evaluation process. One thing worth mentioning is the calibration study on the preference models (reward models). It shows that the preference models has pretty good calibration. And thus we can trust the rewards it assigned in the RL process.
 
 ## [Direct Preference Optimization (DPO)](https://arxiv.org/abs/2305.18290)
 **Summary**: This paper is very interesting! It has the following contribution:
@@ -23,3 +25,6 @@ The theoretical framework also pinpoints why the popular method PPO is unstable 
 
 ## [Proximal Policy Optimization (PPO)](https://arxiv.org/abs/1707.06347)
 **Summary**: This paper introduced a policy gradient objective, which makes the RL training more stable. Instead of $E(\pi_{\theta}(a_t\|s_t)A_t)$, it optimizes $E(\min(r_t(\theta)A_t, clip(r_t(\theta), 1-\epsilon, 1+\epsilon)A_t))$, where $r_t(\theta) = \pi(a_t\|s_t)/\pi_{old}(a_t\|s_t)$, this gives a constraint such that the policy function won’t increase forever, and does not perform reward hacking. Exploration can be achieved by adding an entropy bonus on this function. This function proves to learn faster and converge faster compared with other methods. This method is also used later in the traditional LLM training.
+
+## [Gradient Low-rank Projection (GaLore)](https://arxiv.org/abs/2403.03507)
+Summary: if one looks at the gradient decent process as a curve in the weight space, one can think of Galore method is to use a piecewise linear function to approximate this curve. These linear segments live in a subspace of the original weight space, and thus can be parametrized by a smaller weight matrix. The contribution of this paper is that it chooses these piecewise linear segments to be the subspace formed by the first $r$ principal components of the weight matrices, and these projection matrices (to these subspaces) are modified every $N$ steps. Here $r$ and $N$ are hyperparameters to be tuned. This method is particularly interesting is that this may follow the original gradient descent curve instead of some contrived parametrization such as LoRA.
