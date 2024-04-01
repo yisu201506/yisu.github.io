@@ -4,6 +4,7 @@ title:  "Recent Read Papers and Summaries"
 ---
 This blog records the paper I recently read, I will try to partition them by topics.
 
+# LLM Papers
 ## [InstructGPT](https://arxiv.org/abs/2203.02155)
 **Summary**: Historically, the language model trained on large corpses of texts using next word prediction is not so good at following instructions, answering questions or other preferred way that humans want it to perform. This paper provides a method or rather a sequence of steps to align the language model to the human preference in texts and values in it.
 
@@ -27,4 +28,31 @@ The theoretical framework also pinpoints why the popular method PPO is unstable 
 **Summary**: This paper introduced a policy gradient objective, which makes the RL training more stable. Instead of $E(\pi_{\theta}(a_t\|s_t)A_t)$, it optimizes $E(\min(r_t(\theta)A_t, clip(r_t(\theta), 1-\epsilon, 1+\epsilon)A_t))$, where $r_t(\theta) = \pi(a_t\|s_t)/\pi_{old}(a_t\|s_t)$, this gives a constraint such that the policy function won’t increase forever, and does not perform reward hacking. Exploration can be achieved by adding an entropy bonus on this function. This function proves to learn faster and converge faster compared with other methods. This method is also used later in the traditional LLM training.
 
 ## [Gradient Low-rank Projection (GaLore)](https://arxiv.org/abs/2403.03507)
-Summary: if one looks at the gradient decent process as a curve in the weight space, one can think of Galore method is to use a piecewise linear function to approximate this curve. These linear segments live in a subspace of the original weight space, and thus can be parametrized by a smaller weight matrix. The contribution of this paper is that it chooses these piecewise linear segments to be the subspace formed by the first $r$ principal components of the weight matrices, and these projection matrices (to these subspaces) are modified every $N$ steps. Here $r$ and $N$ are hyperparameters to be tuned. This method is particularly interesting is that this may follow the original gradient descent curve instead of some contrived parametrization such as LoRA.
+**Summary**: if one looks at the gradient decent process as a curve in the weight space, one can think of Galore method is to use a piecewise linear function to approximate this curve. These linear segments live in a subspace of the original weight space, and thus can be parametrized by a smaller weight matrix. The contribution of this paper is that it chooses these piecewise linear segments to be the subspace formed by the first $r$ principal components of the weight matrices, and these projection matrices (to these subspaces) are modified every $N$ steps. Here $r$ and $N$ are hyperparameters to be tuned. This method is particularly interesting is that this may follow the original gradient descent curve instead of some contrived parametrization such as LoRA.
+
+## [BitNet](https://arxiv.org/abs/2310.11453)
+**Summary**: Contrast to post training quantization. This work trained a network with a one bit weight matrix (sign of the original weight), and quantized activation. During the training process, one would still use a latent weight matrix (the original weight matrix), but this weight matrix is further quantized by the operations of taking sign, min, max. During backward propagation, these operations are almost differentiable, and thus can do backward propagation.The performance is worse than typical transformer, but the energy consumption is a fraction of that for full transformers. (To be honest, I don’t see that why energy consumption should be prioritized at this stage of research)
+
+## [OneBit](https://arxiv.org/abs/2402.11295)
+**Summary**: Use a teacher-student, to distill a full precision model to a one-bit weight plus two full precision vectors which corresponds to the sign matrix of the weight matrix W and the first principal component of the matrix W. The training data is from the teacher model’s output, and the objective function is both cross entropy between the teacher model’s probabilistic output and the student's probabilistic output and the L2 distance between the normalized hidden layers.
+
+## [LoRA](https://arxiv.org/abs/2106.09685)
+**Summary**:  Training a LM requires keeping model weights in memory, and keep updating them using stochastic gradient descent or a variation such as Adam. These gradients and related optimization states are typically parametrized in the same space as the original weight space, and thus requires the same memory to store. Geometrically speaking, one can think each weight point as point in the total weight space, and SGD is just drawing a curve that contains these points from the initial weights to the point which gives lower loss.
+
+The contribution of this paper is to give a (parametrized) subspace of the original weight space, and the SGD curve can only live on that space. This subspace maintains substantially fewer parameters (up to 1/10,000 of the original weights), and thus saves a lot of memory. The downside of this approach is that the SGD on the parameterized subspace may not lead to the global minimum as it is only a slice of the original space. Therefore , it suffers from performance losses if we use this method to do an entire training. However, if we already have a pretrained model, which is on a local minimum, using this method to fine-tune a model may not lead to much performance loss. Ideally, we want to choose a subspace or a set of subspaces which parameterize the original SGD curve more closely than LoRA.
+
+## [vLLM](https://arxiv.org/abs/2309.06180), [Blog](https://blog.vllm.ai/2023/06/20/vllm.html)
+**Summary**: This paper introduces an efficient LLM inference and serving methods. Specifically, model inference typically has a maximum token, and during inference the contiguous space for these maximum token length is reserved in GPU DRAM, and potentially unused. These caused memory waste up to 80% of the available memory (excluding the memory used for storing the model parameters). PagedAttention, as in the picture below breaks up these sequences into smaller blockers and store each of these logically contiguous blocks in the (maybe noncontiguous) physical blocks using a block table. This way, almost all blocks are made sure not to waste space. Because these blocks are small, different decoding strategies such as parallel sampling and beam search can fully leverage sharing of these blocks, and thus further reduce the GPU memory usage.
+![Screen Shot 2024-03-31 at 12 39 49 PM](https://github.com/yisu201506/yisu201506.github.io/assets/12384424/5f5781a5-f3bd-4a2c-bf66-9f095d1dd60a)
+
+## [LMSYS Arena ](https://arena.lmsys.org/)
+This is an interesting website for different LLM to dual with each other.
+
+# Other ML topics
+## [Is Cosine-Similarity of Embeddings Really About Similarity?](https://arxiv.org/abs/2403.05440)
+**Summary**: This paper shows that the learned cosine similarity in the learned embedding may not reflect the semantic proximity of the samples. The author uses the matrix factorization model that is often used in Netflix and Amazon to illustrate the points, In fact, for one popular object function that is interpreted to be denoising, applying a diagonal/normalization matrix would not change the optimality of the solution, but the cosine similarity is completely destroyed for item - item relationship. In fact, it is an identity matrix. 
+
+However, if the solution space is a dense manifold, then it is difficult to make the solution exactly on the boundary (Probability = 0 if the boundary has zero measure). We should look more closely at the solution space.
+
+
+
