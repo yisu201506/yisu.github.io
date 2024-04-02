@@ -2,7 +2,7 @@
 layout: post
 title:  "Recent Read Papers and Summaries"
 ---
-This blog records the paper I recently read, I will try to partition them by topics. I use the number of 👍 to represent how much I enjoy the paper, and it **DOES NOT** reflect the actual theoretical and practical contribution of the paper.
+This blog records the paper I recently read, I will try to partition them by topics. I use the number of 👍 to represent how much I enjoy the paper, and it **DOES NOT** reflect the actual theoretical and practical contribution of the paper. All the graphs are referred through the title link unless otherwise specified.
 
 # [Mixture of Experts (MoE)](https://huggingface.co/blog/moe#what-is-a-mixture-of-experts-moe) 👍
 
