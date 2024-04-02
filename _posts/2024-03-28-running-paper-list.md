@@ -4,6 +4,22 @@ title:  "Recent Read Papers and Summaries"
 ---
 This blog records the paper I recently read, I will try to partition them by topics. I use the number of 👍 to represent how much I enjoy the paper, and it **DOES NOT** reflect the actual theoretical and practical contribution of the paper.
 
+# [Mixture of Experts (MoE)](https://huggingface.co/blog/moe#what-is-a-mixture-of-experts-moe) 👍
+
+**Summary**: Mixture of Experts is an ensemble method, in which not all experts are activated to compute the activation. Specifically, the application in LLM is that one feed forward network (FFN) in each transformer block is replaced with several expert FFNs, and a gate/router is used to decide the best experts to go to in training and inference. 
+![Screen Shot 2024-04-01 at 8 34 56 PM](https://github.com/yisu201506/yisu201506.github.io/assets/12384424/a3aa903f-9de9-498b-9028-5d310d0b3480)
+
+There are a few advantages:
+1. This will make pretraining and inference a lot faster for the same amount of parameters. Due to the ensemble nature, the result seems quite good.
+2. Different experts seem to specialize on different things, and thus more explanable compared with typical transformer blocks.
+
+However, there are quite a few drawbacks. 
+1. Although not using all experts are used in the inference, one still needs to load these all experts in the memory, and thus requires a high memory machine.
+2. Finetuning processes tends to overfit, and thus requires higher dropout or adding noises in the routers.
+3. The infra serving MoE is a bit more complexed as typical batching may not work well since the activation of experts are sparse (not all experts are activated).
+
+To be honest, since MoE takes more memory to run what is equivalently a smaller model, I do not think this trade-off would be a trend in the research and industry, where memory will be limited in the personal device.
+
 # LLM Papers 
 ## [InstructGPT](https://arxiv.org/abs/2203.02155) 👍👍
 **Summary**: Historically, the language model trained on large corpses of texts using next word prediction is not so good at following instructions, answering questions or other preferred way that humans want it to perform. This paper provides a method or rather a sequence of steps to align the language model to the human preference in texts and values in it.
