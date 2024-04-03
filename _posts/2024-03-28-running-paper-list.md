@@ -4,7 +4,9 @@ title:  "Recent Read Papers and Summaries"
 ---
 This blog records the paper I recently read, I will try to partition them by topics. I use the number of 👍 to represent how much I enjoy the paper, and it **DOES NOT** reflect the actual theoretical and practical contribution of the paper. All the graphs are referred through the title link unless otherwise specified.
 
-# [Mixture of Experts (MoE)](https://huggingface.co/blog/moe#what-is-a-mixture-of-experts-moe) 👍
+# LLM Papers
+
+## [Mixture of Experts (MoE)](https://huggingface.co/blog/moe#what-is-a-mixture-of-experts-moe) 👍
 
 **Summary**: Mixture of Experts is an ensemble method, in which not all experts are activated to compute the activation. Specifically, the application in LLM is that one feed forward network (FFN) in each transformer block is replaced with several expert FFNs, and a gate/router is used to decide the best experts to go to in training and inference. 
 ![Screen Shot 2024-04-01 at 8 34 56 PM](https://github.com/yisu201506/yisu201506.github.io/assets/12384424/a3aa903f-9de9-498b-9028-5d310d0b3480)
@@ -20,7 +22,6 @@ However, there are quite a few drawbacks.
 
 To be honest, since MoE takes more memory to run what is equivalently a smaller model, I do not think this trade-off would be a trend in the research and industry, where memory will be limited in the personal device.
 
-# LLM Papers 
 ## [InstructGPT](https://arxiv.org/abs/2203.02155) 👍👍
 **Summary**: Historically, the language model trained on large corpses of texts using next word prediction is not so good at following instructions, answering questions or other preferred way that humans want it to perform. This paper provides a method or rather a sequence of steps to align the language model to the human preference in texts and values in it.
 
