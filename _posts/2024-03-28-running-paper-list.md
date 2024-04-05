@@ -4,6 +4,24 @@ title:  "Recent Read Papers and Summaries"
 ---
 This blog records the paper I recently read, I will try to partition them by topics. I use the number of 👍 to represent how much I enjoy the paper, and it **DOES NOT** reflect the actual theoretical and practical contribution of the paper. All the graphs are referred through the title link unless otherwise specified.
 
+- [LLM Papers](#llm-papers)
+  * [[Mixture of Experts (MoE)](https://huggingface.co/blog/moe#what-is-a-mixture-of-experts-moe) 👍](#-mixture-of-experts--moe---https---huggingfaceco-blog-moe-what-is-a-mixture-of-experts-moe----)
+  * [[InstructGPT](https://arxiv.org/abs/2203.02155) 👍👍](#-instructgpt--https---arxivorg-abs-220302155------)
+  * [[Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback](https://arxiv.org/abs/2204.05862) 👍](#-training-a-helpful-and-harmless-assistant-with-reinforcement-learning-from-human-feedback--https---arxivorg-abs-220405862----)
+  * [[Direct Preference Optimization (DPO)](https://arxiv.org/abs/2305.18290) 👍👍👍](#-direct-preference-optimization--dpo---https---arxivorg-abs-230518290--------)
+  * [[Proximal Policy Optimization (PPO)](https://arxiv.org/abs/1707.06347) 👍](#-proximal-policy-optimization--ppo---https---arxivorg-abs-170706347----)
+  * [[Gradient Low-rank Projection (GaLore)](https://arxiv.org/abs/2403.03507) 👍👍👍](#-gradient-low-rank-projection--galore---https---arxivorg-abs-240303507--------)
+  * [[BitNet](https://arxiv.org/abs/2310.11453) 👍](#-bitnet--https---arxivorg-abs-231011453----)
+  * [[OneBit](https://arxiv.org/abs/2402.11295) 👍](#-onebit--https---arxivorg-abs-240211295----)
+  * [[LoRA](https://arxiv.org/abs/2106.09685) 👍](#-lora--https---arxivorg-abs-210609685----)
+  * [[vLLM](https://arxiv.org/abs/2309.06180), [Blog](https://blog.vllm.ai/2023/06/20/vllm.html) 👍👍👍](#-vllm--https---arxivorg-abs-230906180----blog--https---blogvllmai-2023-06-20-vllmhtml--------)
+  * [[LMSYS Arena ](https://arena.lmsys.org/) 👍👍👍](#-lmsys-arena---https---arenalmsysorg---------)
+- [Other ML topics](#other-ml-topics)
+  * [[Is Cosine-Similarity of Embeddings Really About Similarity?](https://arxiv.org/abs/2403.05440)](#-is-cosine-similarity-of-embeddings-really-about-similarity---https---arxivorg-abs-240305440-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 # LLM Papers
 
 ## [Mixture of Experts (MoE)](https://huggingface.co/blog/moe#what-is-a-mixture-of-experts-moe) 👍
