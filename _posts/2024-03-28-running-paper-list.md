@@ -16,6 +16,8 @@ This blog records the paper I recently read, I will try to partition them by top
   * [[LoRA](https://arxiv.org/abs/2106.09685) 👍](#-lora--https---arxivorg-abs-210609685----)
   * [[vLLM](https://arxiv.org/abs/2309.06180), [Blog](https://blog.vllm.ai/2023/06/20/vllm.html) 👍👍👍](#-vllm--https---arxivorg-abs-230906180----blog--https---blogvllmai-2023-06-20-vllmhtml--------)
   * [[LMSYS Arena ](https://arena.lmsys.org/) 👍👍👍](#-lmsys-arena---https---arenalmsysorg---------)
+- [Image Related Papers](#image-related-papers)
+  * [Diffusion Models 👍👍👍](#diffusion-models-------)
 - [Other ML topics](#other-ml-topics)
   * [[Is Cosine-Similarity of Embeddings Really About Similarity?](https://arxiv.org/abs/2403.05440)](#-is-cosine-similarity-of-embeddings-really-about-similarity---https---arxivorg-abs-240305440-)
 
