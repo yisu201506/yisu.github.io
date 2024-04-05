@@ -7,6 +7,7 @@ description: >
   This site is for documenting my learnings and thoughts  
 
 show_downloads: false
+toc: true
 
 theme: minima
 
