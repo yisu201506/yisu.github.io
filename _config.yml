@@ -2,10 +2,14 @@ title: Yi Su's Running Thoughts
 author:
   name: Yi Su
   email: yisu201506@gmail.com
+
 description: >
   This site is for documenting my learnings and thoughts  
+
 show_downloads: false
+
 theme: minima
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
