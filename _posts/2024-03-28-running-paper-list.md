@@ -4,9 +4,6 @@ title:  "Recent Read Papers and Summaries"
 ---
 This blog records the paper I recently read, I will try to partition them by topics. I use the number of 👍 to represent how much I enjoy the paper, and it **DOES NOT** reflect the actual theoretical and practical contribution of the paper. All the graphs are referred through the title link unless otherwise specified.
 
-<details>
-  <summary>Table of Contents</summary>
-
 - [LLM Papers](#llm-papers)
   * [[Mixture of Experts (MoE)](https://huggingface.co/blog/moe#what-is-a-mixture-of-experts-moe) 👍](#-mixture-of-experts--moe---https---huggingfaceco-blog-moe-what-is-a-mixture-of-experts-moe----)
   * [[InstructGPT](https://arxiv.org/abs/2203.02155) 👍👍](#-instructgpt--https---arxivorg-abs-220302155------)
@@ -22,7 +19,6 @@ This blog records the paper I recently read, I will try to partition them by top
 - [Other ML topics](#other-ml-topics)
   * [[Is Cosine-Similarity of Embeddings Really About Similarity?](https://arxiv.org/abs/2403.05440)](#-is-cosine-similarity-of-embeddings-really-about-similarity---https---arxivorg-abs-240305440-)
 
-</details>
 
 # LLM Papers
 
