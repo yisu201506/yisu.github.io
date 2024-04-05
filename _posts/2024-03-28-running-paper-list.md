@@ -90,7 +90,11 @@ This is an interesting website for different LLM to dual with each other.
 **Summary**: The problem that we are trying to solve here is that given an empirical dataset, how can we create a model about that dataset, and use it to generate samples from similar to the dataset. This process can be conditioned on some external data as well. Specifically, the authors of these blogs are more concerned with high fidelity image generation.
 
 The first blog focuses on the diffusion model from maximum likelihood methods. Specifically, given dataset $D$, we want to find the underlying distribution such that it solves 
-$$argmax\prod_{x\in D} p(x) = argmax\sum_{x\in D} \log p(x) \approx E(\log p(x)) \geq \text{Evidence Lower Bound\}$$
+$argmax\prod_{x\in D} p(x) = argmax\sum_{x\in D} \log p(x) \approx E(\log p(x)) \geq \text{Evidence Lower Bound\}$
+
+\begin{equation}
+a = b = c
+\end{equation}
 
 Therefore we can maximize the evidience lower bound to model the original dataset. This modeling process involves first keep adding noise to the original data for $T$ steps until the resulting data is roughly standard Guassian distribution. Note that this step is more or less deterministic. And then we create the dataset by using the timestep $t$, and the latent image at $t$ to predict the noise added to original data to obtain the latent data at $t$.
 
