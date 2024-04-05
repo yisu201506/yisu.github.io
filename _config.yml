@@ -10,8 +10,6 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-full_url: https://www.yi-su.com
-
 markdown: kramdown
 kramdown:
   math_engine: mathjax
