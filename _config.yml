@@ -9,7 +9,7 @@ description: >
 show_downloads: false
 toc: true
 
-theme: minima
+theme: minimal-mistakes-jekyll
 
 plugins:
   - jekyll-feed
