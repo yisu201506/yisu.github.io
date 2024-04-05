@@ -1,8 +1,13 @@
+<!-- Custom Scripts and Styles -->
+<!-- MathJax configuration and script inclusion -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
       inlineMath: [ ['$$','$$'], ["\\(","\\)"] ],
-      displayMath: [ ['$$','$$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
     },
     TeX: {
       Macros: {
@@ -10,9 +15,8 @@
         ket: ["|{#1}\\rangle", 1],
         braket: ["\\langle{#1}\\rangle", 1],
         bk: ["\\langle{#1}|{#2}|{#3}\\rangle", 3]
-     }
-   }
+      }
+    }
   });
 </script>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML' async></script>
+<!-- You can add more custom scripts or CSS links below -->
