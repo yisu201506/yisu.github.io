@@ -85,6 +85,24 @@ The contribution of this paper is to give a (parametrized) subspace of the origi
 ## [LMSYS Arena ](https://arena.lmsys.org/) 👍👍👍
 This is an interesting website for different LLM to dual with each other.
 
+# Image Related Papers
+
+## Diffusion Models 👍👍👍
+* [Understanding Diffusion Models: A Unified Perspective](https://calvinyluo.com/2022/08/26/diffusion-tutorial.html#mjx-eqn%3Aeq%3A78)
+* [Generative Modeling by Estimating Gradients of the Data Distribution](https://yang-song.net/blog/2021/score/)
+
+**Summary**: The problem that we are trying to solve here is that given an empirical dataset, how can we create a model about that dataset, and use it to generate samples from similar to the dataset. This process can be conditioned on some external data as well. Specifically, the authors of these blogs are more concerned with high fidelity image generation.
+
+The first blog focuses on the diffusion model from maximum likelihood methods. Specifically, given dataset $D$, we want to find the underlying distribution such that it solves 
+$$argmax\prod_{x\in D} p(x) = argmax\sum_{x\in D} \log p(x) \approx E(\log p(x)) \geq \text{Evidence Lower Bound\}$$
+
+Therefore we can maximize the evidience lower bound to model the original dataset. This modeling process involves first keep adding noise to the original data for $T$ steps until the resulting data is roughly standard Guassian distribution. Note that this step is more or less deterministic. And then we create the dataset by using the timestep $t$, and the latent image at $t$ to predict the noise added to original data to obtain the latent data at $t$.
+
+The second blog focuses on how we use score, which is the gradient of the log probability $\nabla\log p(x)$, and Langevin dynamics, a discrete version of stochastic differential equation to dynamically morph an arbitrary prior distribution to the dataset distribution based on the proximated score.
+
+These two approaches are connected via Tweedie’s Formula. Furthermore, we can inject conditions to these models so that we can generate a guided model based on some image and text cues.
+
+
 # Other ML topics
 ## [Is Cosine-Similarity of Embeddings Really About Similarity?](https://arxiv.org/abs/2403.05440)
 **Summary**: This paper shows that the learned cosine similarity in the learned embedding may not reflect the semantic proximity of the samples. The author uses the matrix factorization model that is often used in Netflix and Amazon to illustrate the points, In fact, for one popular object function that is interpreted to be denoising, applying a diagonal/normalization matrix would not change the optimality of the solution, but the cosine similarity is completely destroyed for item - item relationship. In fact, it is an identity matrix. 
