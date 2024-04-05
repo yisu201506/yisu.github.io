@@ -14,9 +14,5 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-markdown: kramdown
-kramdown:
-  math_engine: mathjax
-
 minima:
   skin: classic  
