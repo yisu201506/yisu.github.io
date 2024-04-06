@@ -27,7 +27,10 @@ layout: base
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    {% include toc.html html=content %}
+    <details>
+      <summary>Table of Contents</summary>
+      {% include toc.html html=content %}
+    </details>
     {{ content }}
   </div>
 
