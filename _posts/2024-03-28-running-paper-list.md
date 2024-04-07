@@ -41,9 +41,7 @@ It offers a framework where people can directly align the model according to the
 It offers sound theoretical proof and reasoning that using this method, we can automatically get a reward function for free during the training process, and this reward function is unique up to some equivalent conditions.
 
 The derivation is also mathmatically pleasing. Suppose we have trained a reward function $r(x, y)$, then the object function of the reinforcement learning step by sampling the reward function is
-$$
-\max_{\pi_{\theta}}(E_{x \sim D, y \sim \pi_{theta}(y\|x)}[r_{\phi}(x,y)] -\beta D_{\text{KL}}[\pi_{\theta}(y\|x)||\pi_{\text{ref}}(y\|x)])
-$$
+$$\max_{\pi_{\theta}}(E_{x \sim D, y \sim \pi_{theta}(y\|x)}(r_{\phi}(x,y) -\beta D_{\text{KL}}(\pi_{\theta}(y\|x)||\pi_{\text{ref}}(y\|x)))$$
 . It can be shown that the optimal policy $\pi_r(y\|x)$ can be written analytically as $\pi_{r}(y|x) = \dfrac{1}{Z(x)}\pi_{\text{ref}}(y|x) \exp(\dfrac{1}{\beta}r(x, y))$, where $Z(x)$ is a function of $x$ only. And one can rearrange the above equation for $r(x,y)$, and get $r(x, y) = \beta\log \dfrac{\pi_r(y|x)}{\pi_{\text{ref}}(y|x)} + \beta\log Z(x)$.
 
 We can plug in the above equation back to the objective function that we use to approximate the reward function $r_{\phi}(x,y)$, namely $-E_{(x, y_w, y_l) \sim D}[\log\sigma(r_{\phi}(x, y_w) - r_{\phi}(x, y_l))]$, and obtain the DPO objective function
