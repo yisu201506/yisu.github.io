@@ -43,7 +43,7 @@ It offers sound theoretical proof and reasoning that using this method, we can a
 The derivation is also mathmatically pleasing. Suppose we have trained a reward function $r(x, y)$, then the object function of the reinforcement learning step by sampling the reward function is
 {::nomarkdown}
 $$
-\max_{\pi_{\theta}}(E_{x \sim D, y \sim \pi_{theta}(y\|x)}(r_{\phi}(x,y) -\beta D_{\text{KL}}(\pi_{\theta}(y\|x)||\pi_{\text{ref}}(y\|x)))
+\max_{\pi_{\theta}}(E_{x \sim D, y \sim \pi_{theta}(y|x)}(r_{\phi}(x,y) -\beta D_{\text{KL}}(\pi_{\theta}(y|x)||\pi_{\text{ref}}(y|x)))
 $$
 {:/nomarkdown}
 It can be shown that the optimal policy $\pi_r(y\|x)$ can be written analytically as 
@@ -57,7 +57,7 @@ where $Z(x)$ is a function of $x$ only. And one can rearrange the above equation
 We can plug in the above equation back to the objective function that we use to approximate the reward function $r_{\phi}(x,y)$, namely $-E_{(x, y_w, y_l) \sim D}[\log\sigma(r_{\phi}(x, y_w) - r_{\phi}(x, y_l))]$, and obtain the DPO objective function
 
 {::nomarkdown}
-$$ L_{DPO}(\pi_{\theta}, \pi_{\text{ref}}) = - E_{(x, y_w, y_l) \sim D}(\log\sigma(\beta\log\dfrac{\pi_{\theta}(y_w\|x)}{\pi_{\text{ref}}(y_w\|x)} - \dfrac{\pi_{\theta}(y_l\|x)}{\pi_{\text{ref}}(y_l\|x)}))$$
+$$ L_{DPO}(\pi_{\theta}, \pi_{\text{ref}}) = - E_{(x, y_w, y_l) \sim D}(\log\sigma(\beta\log\dfrac{\pi_{\theta}(y_w|x)}{\pi_{\text{ref}}(y_w|x)} - \dfrac{\pi_{\theta}(y_l|x)}{\pi_{\text{ref}}(y_l|x)}))$$
 {:/nomarkdown}
 
 After we train this model, we can get the reward function for free as $r(x, y) = \beta\log \dfrac{\pi_r(y\|x)}{\pi_{\text{ref}}(y\|x)}$. It can be show that $r(x, y)$ is unique up to an addition of a function of $x$. The theoretical framework also pinpoints why the popular method PPO is unstable in training.
