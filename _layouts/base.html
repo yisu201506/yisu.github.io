@@ -6,10 +6,13 @@
     
     <!-- MathJax script for LaTeX rendering -->
     <script>
-      MathJax = {
+      window.MathJax = {
         tex: {
           inlineMath: [['$', '$']],
-          displayMath: [['$$','$$'], ["\\[","\\]"]]
+          displayMath: [['$$','$$'], ['\\[','\\]']]
+        },
+        svg: {
+          fontCache: 'global'
         }
       };
     </script>
